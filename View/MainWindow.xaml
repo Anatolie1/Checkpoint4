@@ -1,0 +1,105 @@
+﻿<Window x:Class="Checkpoint3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Checkpoint3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000">
+    <Grid TextBlock.TextAlignment="Center" Background="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="0.4*" />
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="60" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Heavy" FontFamily="Comic Sans MS" Grid.ColumnSpan="2">Wild Circus</TextBlock>
+        <TextBlock Foreground="BlueViolet" Grid.Row="1" Margin="10,0,0,0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS">Shows</TextBlock>
+        <TextBlock Foreground="BlueViolet" Grid.Row="2" Margin="10,0,0,0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS">Animals</TextBlock>
+        <TextBlock Foreground="BlueViolet" Grid.Row="3" Margin="10,0,0,0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS">Price</TextBlock>
+        <TextBlock Foreground="BlueViolet" Grid.Row="4" Margin="10,0,0,0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS" TextWrapping="Wrap">Contact Us</TextBlock>
+        <TextBlock Foreground="BlueViolet" Grid.Row="5" Margin="10,0,-40,0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS">Follow Us</TextBlock>
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="Shows" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="Shows_SelectionChanged">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Height="100">
+                        <Image Source="{Binding Url}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Grid.Row="2" Grid.Column="1" x:Name="AnimalList" Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="100">
+                        <Image Source="{Binding Url}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="3" Grid.Column="1" x:Name="PriceList" Margin="0,5,300,5" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.8*" />
+                <ColumnDefinition Width="0.9*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Adult" FontFamily="Comic Sans MS" FontSize="20" Foreground="SeaGreen"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Child" FontFamily="Comic Sans MS" FontSize="20" Foreground="SeaGreen"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="Family" FontFamily="Comic Sans MS" FontSize="20" Foreground="SeaGreen"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="Group Adult" FontFamily="Comic Sans MS" FontSize="20" Foreground="SeaGreen"/>
+            <TextBlock Grid.Row="0" Grid.Column="4" Text="Group Children" FontFamily="Comic Sans MS" FontSize="20" Foreground="SeaGreen"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Adult}" FontFamily="Comic Sans MS" FontSize="20" Foreground="DeepPink"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Child}" FontFamily="Comic Sans MS" FontSize="20" Foreground="DeepPink"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Family}" FontFamily="Comic Sans MS" FontSize="20" Foreground="DeepPink"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding GroupAdult}" FontFamily="Comic Sans MS" FontSize="20" Foreground="DeepPink"/>
+            <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding GroupChildren}" FontFamily="Comic Sans MS" FontSize="20" Foreground="DeepPink"/>
+        </Grid>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Full Name *" FontFamily="Comic Sans MS" FontSize="20" Margin="70,25,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Orange" />
+        <TextBox x:Name="Name_txt"  Grid.Row="4" Grid.Column="1" Width="300" FontFamily="Comic Sans MS" FontSize="20" Margin="180,25,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Justify"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Email *" FontFamily="Comic Sans MS" FontSize="20" Margin="112,55,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Orange" />
+        <TextBox x:Name="Email_txt" Grid.Row="4" Grid.Column="1" Width="400" FontFamily="Comic Sans MS" FontSize="20" Margin="180,55,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Justify"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Message *" FontFamily="Comic Sans MS" FontSize="20" Margin="82,85,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Orange" />
+        <TextBox x:Name="Message_txt" Grid.Row="4" Grid.Column="1" FontFamily="Comic Sans MS" FontSize="20" Margin="180,85,40,0" VerticalAlignment="Top" Height="100" TextWrapping="Wrap" TextAlignment="Justify"/>
+
+        <Button x:Name="facebook" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="150,0,0,0" Height="40" Width="40" Background="Transparent" BorderThickness="0" BorderBrush="Aqua">
+            <Image Source="E:\Checkpoint3\Animal\facebook.png"/>
+        </Button>
+        <Button x:Name="twitter" Grid.Row="5" Grid.Column="1" Margin="400,5,0,5" HorizontalAlignment="Left" Height="40" Width="47" Background="Transparent" BorderThickness="0" BorderBrush="Aqua">
+            <Image Source="E:\Checkpoint3\Animal\twitter.png"/>
+        </Button>
+        <Button x:Name="googlemap" Grid.Row="5" Grid.Column="1" Margin="650,5,0,5" HorizontalAlignment="Left" Height="40" Width="57" Background="Transparent" BorderThickness="0" BorderBrush="Aqua">
+            <Image Source="E:\Checkpoint3\Animal\googlemap.png"/>
+        </Button>
+        <Button x:Name="Send_Button" Content="Send" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="96,150,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" FontFamily="Comic Sans MS" FontSize="20" Click="Send_Button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB452F7" Offset="0.691"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
